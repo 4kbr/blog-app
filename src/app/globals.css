@@ -20,5 +20,6 @@ a {
   @apply min-h-[100vh] my-0 mx-auto py-0 px-16 flex flex-col justify-between;
 }
 
-.contact {
+.icon {
+  @apply opacity-60 cursor-pointer;
 }

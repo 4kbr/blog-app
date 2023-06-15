@@ -40,7 +40,7 @@ const Navbar = () => {
       <Link href={"/"} className="logo font-bold text-2xl">
         Homie
       </Link>
-      <div className="links flex items-center gap-5">
+      <div className="links md:flex items-center gap-5 hidden ">
         {links.map((link, i) => (
           <Link href={link.url} key={i} className="link ">
             {link.title}
