@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 const links = [
@@ -35,14 +36,22 @@ const links = [
 
 const Navbar = () => {
   return (
-    <div>
-      <Link href={"/"}>Homie</Link>
-      <div>
+    <div className="h-28 flex justify-between items-center">
+      <Link href={"/"} className="logo font-bold text-2xl">
+        Homie
+      </Link>
+      <div className="links flex items-center gap-5">
         {links.map((link, i) => (
-          <Link href={link.url} key={i}>
+          <Link href={link.url} key={i} className="link ">
             {link.title}
           </Link>
         ))}
+        <button
+          onClick={() => console.log("Logeed out")}
+          className="logout p-2 border-none bg-primary"
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
