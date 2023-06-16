@@ -23,3 +23,7 @@ a {
 .icon {
   @apply opacity-60 cursor-pointer;
 }
+
+.itemHome {
+  @apply flex-1 flex flex-col gap-14;
+}
