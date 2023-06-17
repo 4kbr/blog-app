@@ -4,7 +4,7 @@ import { Inter, Roboto, Poppins } from "next/font/google";
 import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
-const roboto = Roboto({ weight: "500", subsets: ["latin"] });
+const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
   title: "EBlog",
@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={inter.className}>
         <div className="container">
           <Navbar />
           {children}
