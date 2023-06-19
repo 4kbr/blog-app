@@ -19,13 +19,13 @@ export default function Home() {
         <Button url="/Portfolio" text="See Our Works" />
       </div>
 
-      <div className="itemHome ">
+      <div className="itemHome object-contain">
         <Image
           width={500}
           height={500}
           src={Hero}
           alt="Hero Homie"
-          className="w-full h-[500px] object-cover"
+          className="imgMove w-full h-[500px] object-cover"
         />
       </div>
     </div>

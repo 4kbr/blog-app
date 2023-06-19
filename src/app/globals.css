@@ -27,3 +27,16 @@ a {
 .itemHome {
   @apply flex-1 flex flex-col gap-14;
 }
+
+.imgMove {
+  animation: move 3s infinite ease alternate;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(-15px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}

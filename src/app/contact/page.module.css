@@ -1,0 +1,18 @@
+.inputContact,
+.textAreaContact {
+  @apply p-5 bg-transparent outline-none border-solid border-gray-300 border-[3px] text-gray-200 rounded-lg
+  text-xl font-bold;
+}
+
+.imgContact {
+  animation: move 3s infinite ease alternate;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(-15px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
