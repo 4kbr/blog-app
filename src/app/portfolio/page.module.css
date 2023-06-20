@@ -1,0 +1,24 @@
+.item {
+  @apply border-[5px] border-solid border-gray-300 rounded-lg
+  w-[300px] h-[300px] relative transition-all;
+}
+
+.title {
+  @apply font-bold absolute right-3 bottom-3 text-4xl transition-all z-20;
+}
+
+.layer {
+  @apply bg-black w-full h-full z-10 absolute opacity-0 transition-all;
+}
+
+.item:hover {
+  @apply border-primary text-primary scale-110 shadow-inner shadow-primary;
+}
+
+.item:hover .title {
+  @apply right-0 bottom-[10%] text-center;
+}
+
+.item:hover .layer {
+  @apply opacity-30;
+}
