@@ -1,13 +1,32 @@
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
-const BlogId = () => {
+async function getData(id: string) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    // throw new Error("Failed to fetch data");
+    //or just throw not found
+    return notFound();
+  }
+
+  return res.json();
+}
+
+type Props = {
+  params: Params;
+};
+const BlogId = async ({ params }: Props) => {
+  const data = await getData(params.id);
   return (
     <div className="blogIdContainer">
       <div className="top flex">
         <div className="info flex-1 flex flex-col justify-between">
-          <h1 className="title text-[40px] font-bold">
-            Lorem, ipsum doloritaque, quia laudantium eos sint nostr
-          </h1>
+          <h1 className="title text-[40px] font-bold">{data.title}</h1>
           <p className="desc text-lg font-light">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
             itaque, quia laudantium eos sint nostrum assumenda, perferendis
