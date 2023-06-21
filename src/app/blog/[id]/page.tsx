@@ -13,7 +13,6 @@ async function getData(id: string) {
     //or just throw not found
     return notFound();
   }
-
   return res.json();
 }
 
@@ -54,7 +53,7 @@ const BlogId = async ({ params }: Props) => {
           />
         </div>
       </div>
-      <div className="content mt-[50px] text-xl font-light text-gray-300 text-justify">
+      <div className="content mt-[50px] text-xl font-light text-justify">
         <p className="desc">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio,
           officia? Blanditiis sint qui tenetur id possimus non velit! Nobis
