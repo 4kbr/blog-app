@@ -17,7 +17,7 @@ const Portfolio = () => {
           <div className={styles.layer}></div>
           <span className={styles.title}>Illustration</span>
         </Link>
-        <Link href={"/portfolio/illustrations"} className={`${styles.item}`}>
+        <Link href={"/portfolio/websites"} className={`${styles.item}`}>
           <Image
             src={"/websites.jpg"}
             alt="illustration - homie"
@@ -27,7 +27,7 @@ const Portfolio = () => {
           <div className={styles.layer}></div>
           <span className={styles.title}>Website</span>
         </Link>
-        <Link href={"/portfolio/illustrations"} className={`${styles.item}`}>
+        <Link href={"/portfolio/applications"} className={`${styles.item}`}>
           <Image
             src={"/apps.jpg"}
             alt="illustration - homie"
