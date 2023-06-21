@@ -16,7 +16,7 @@ export default function Home() {
           Make a Idea become App. We bring together the teams from the global
           tech industry
         </p>
-        <Button url="/Portfolio" text="See Our Works" />
+        <Button url="/portfolio" text="See Our Works" />
       </div>
 
       <div className="itemHome object-contain">

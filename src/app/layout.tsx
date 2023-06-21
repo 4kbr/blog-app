@@ -5,7 +5,10 @@ import Footer from "@/components/footer/Footer";
 import { ThemeProvider } from "../../context/ThemeContext";
 
 const inter = Inter({ subsets: ["latin"] });
-const roboto = Roboto({ weight: "400", subsets: ["latin"] });
+const roboto = Roboto({
+  weight: ["400", "100", "300", "500", "700", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "EBlog",
@@ -19,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <ThemeProvider>
           <div className="appContainer">
             <Navbar />
