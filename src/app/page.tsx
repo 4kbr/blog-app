@@ -4,7 +4,7 @@ import Hero from "public/hero.png";
 
 export default function Home() {
   return (
-    <div className="homeContainer flex items-center gap-24">
+    <div className="homeContainer flex items-center gap-24 ">
       <div className="itemHome">
         <h1
           className="title text-6xl font-bold bg-gradient-to-b from-primary 

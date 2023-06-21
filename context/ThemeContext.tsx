@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, createContext, useContext, useState } from "react";
+import { ReactNode, createContext, useState } from "react";
 
 type themeContextType = {
   toggle: Function;
@@ -15,7 +15,7 @@ export const ThemeContext = createContext<themeContextType>(
   themeContextDefaultValues
 );
 
-export const useTheme = () => useContext(ThemeContext);
+// export const useTheme = () => useContext(ThemeContext);
 
 type Props = {
   children: ReactNode;
@@ -30,7 +30,7 @@ export const ThemeProvider = ({ children }: Props) => {
 
   return (
     <ThemeContext.Provider value={{ node, toggle }}>
-      {children}
+      <div className={`theme ${node}mode`}>{children}</div>
     </ThemeContext.Provider>
   );
 };

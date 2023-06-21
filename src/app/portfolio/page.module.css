@@ -1,6 +1,6 @@
 .item {
   @apply border-[5px] border-solid border-gray-300 rounded-lg
-  w-[300px] h-[300px] relative transition-all;
+  w-[300px] h-[300px] relative transition-all text-white;
 }
 
 .title {
@@ -12,7 +12,7 @@
 }
 
 .item:hover {
-  @apply border-primary text-primary scale-110 shadow-inner shadow-primary;
+  @apply border-primary scale-110 shadow-inner shadow-primary text-primary;
 }
 
 .item:hover .title {

@@ -40,3 +40,15 @@ a {
     transform: translateY(0px);
   }
 }
+
+.theme {
+  transition: 1s all ease;
+}
+
+.darkmode {
+  @apply bg-[#111] text-[#f4f4f4];
+}
+
+.lightmode {
+  @apply bg-white text-[#111];
+}

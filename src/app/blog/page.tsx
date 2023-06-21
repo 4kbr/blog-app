@@ -27,7 +27,7 @@ const Blog = () => {
             <h1 className="title font-bold mb-3 text-3xl">
               Inventore, laborum tempore
             </h1>
-            <p className="desc text-lg text-gray-300">
+            <p className="desc text-lg ">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non,
               vero illum, enim nostrum in hic perferendis laboriosam placeat aut
               dignissimos at? Inventore, laborum tempore. Nisi ad voluptatum,

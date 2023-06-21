@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 const DarkModeToggle = () => {
-  const [node, setNode] = useState("dark");
+  const { toggle, node } = useContext(ThemeContext);
+
   return (
     <div
       className="toggleContainer w-12 h-6 border-solid border-[1.5px] border-primary flex justify-between rounded-3xl items-center p-1 relative cursor-pointer select-none"
-      onClick={() => {
-        setNode(node === "dark" ? "light" : "dark");
-      }}
+      onClick={() => toggle()}
     >
       <div className="iconToggle text-[12px]">🌙</div>
       <div className="iconToggle text-[12px]">☀️</div>
