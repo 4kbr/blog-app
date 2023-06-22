@@ -4,10 +4,12 @@ export interface IPost {
   desc: string;
   image: string;
   username: string;
+  content: string;
 }
 
 export type IUser = {
+  _id: string;
   name: string;
   email: string;
-  password: string;
+  password?: string;
 };

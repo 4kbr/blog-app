@@ -3,7 +3,7 @@ import { IPost } from "@/utils/model_interface";
 import Image from "next/image";
 import Link from "next/link";
 
-async function getData() {
+async function getData(): Promise<IPost[]> {
   const res = await fetchPublic("/api/posts", {
     cache: "no-store",
   });
@@ -17,11 +17,11 @@ async function getData() {
 }
 
 const Blog = async () => {
-  const data: [] = await getData();
+  const data = await getData();
 
   return (
     <div className="blogContainer">
-      {data.map((i: IPost) => (
+      {data.map((i) => (
         <Link
           href={"/blog/" + i._id}
           className="blog items-center gap-[50px] mb-[50px] flex"
@@ -32,9 +32,7 @@ const Blog = async () => {
               h-[250px] w-[400px]"
           >
             <Image
-              src={
-                "https://images.unsplash.com/photo-1494256997604-768d1f608cac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=929&q=80"
-              }
+              src={i.image}
               fill
               alt="kucing - homie"
               className="img object-cover"

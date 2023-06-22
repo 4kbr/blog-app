@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import User from "@/models/User";
 
 //ini buat App router
-export const GET = async (params: Request) => {
+export const GET = async (request: Request) => {
   //fetch
   try {
     await dbConnect();
