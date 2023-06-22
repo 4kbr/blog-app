@@ -17,6 +17,16 @@ async function getData(id: string): Promise<IPost> {
 type Props = {
   params: Params;
 };
+
+export async function generateMetadata({ params }: Props) {
+  const post = await getData(params.id);
+
+  return {
+    title: post.title + " | Homie",
+    description: post.desc,
+  };
+}
+
 const BlogId = async ({ params }: Props) => {
   const data = await getData(params.id);
 

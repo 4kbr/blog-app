@@ -1,6 +1,12 @@
 import Button from "@/components/Button/Button";
 import Image from "next/image";
 import styles from "@/app/contact/page.module.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact | Homie",
+  description: "Contact us for your amazing product",
+};
 
 const Contact = () => {
   return (

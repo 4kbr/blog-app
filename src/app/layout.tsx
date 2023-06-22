@@ -11,8 +11,8 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "EBlog",
-  description: "Blog for puppets",
+  title: "Home | Homie",
+  description: "Blog for educational purpose, let's learn let's earn",
 };
 
 export default function RootLayout({
