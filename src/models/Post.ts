@@ -1,7 +1,8 @@
+import { IPost } from "@/utils/model_interface";
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const postSchema = new Schema(
+const postSchema = new Schema<IPost>(
   {
     title: {
       type: String,
@@ -22,5 +23,6 @@ const postSchema = new Schema(
   },
   { timestamps: true }
 );
-const Post = mongoose.models.Post || mongoose.model("Post", postSchema);
+const Post: mongoose.Model<IPost> =
+  mongoose.models.Post || mongoose.model<IPost>("Post", postSchema);
 export default Post;

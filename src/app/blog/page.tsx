@@ -1,9 +1,10 @@
+import { fetchPublic } from "@/utils/api_call";
+import { IPost } from "@/utils/model_interface";
 import Image from "next/image";
 import Link from "next/link";
 
 async function getData() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-    // next: { revalidate: 10 }, *for fetch new data every ...second
+  const res = await fetchPublic("/api/posts", {
     cache: "no-store",
   });
 
@@ -18,15 +19,13 @@ async function getData() {
 const Blog = async () => {
   const data: [] = await getData();
 
-  // const arrDummie = [];
-  // for (let i = 0; i < 10; i++) arrDummie.push(i);
   return (
     <div className="blogContainer">
-      {data.map((i: any) => (
+      {data.map((i: IPost) => (
         <Link
-          href={"/blog/" + i.id}
+          href={"/blog/" + i._id}
           className="blog items-center gap-[50px] mb-[50px] flex"
-          key={i.id}
+          key={i._id}
         >
           <div
             className="imageContainer relative 
@@ -43,7 +42,7 @@ const Blog = async () => {
           </div>
           <div className="content flex-1 ">
             <h1 className="title font-bold mb-3 text-3xl">{i.title}</h1>
-            <p className="desc text-lg ">{i.body}</p>
+            <p className="desc text-lg ">{i.desc}</p>
           </div>
         </Link>
       ))}
