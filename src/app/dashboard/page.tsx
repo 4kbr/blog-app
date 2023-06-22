@@ -1,4 +1,5 @@
 "use client";
+import { useSession } from "next-auth/react";
 import useSWR from "swr";
 
 const Dashboard = () => {
@@ -12,37 +13,20 @@ const Dashboard = () => {
     isLoading: boolean;
   };
 
-  //TODO:old way
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     setIsLoading(true);
-  //     const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-  //       // next: { revalidate: 10 }, *for fetch new data every ...second
-  //       cache: "no-store",
-  //     });
+  const session = useSession();
 
-  //     if (!res.ok) {
-  //       setErr(true);
-  //     }
-  //     const resJson: [] = await res.json();
-  //     setData(resJson);
-  //     setIsLoading(false);
-  //   };
-
-  //   getData();
-  // }, []);
+  console.log("session");
+  console.log(session);
 
   //TODO: new Way
-  // const fecther = (...args: []) => fetch(...args).then((res) => res.json());
+  const fecther = (args: string) => fetch(args).then((res) => res.json());
 
   const { data, error } = useSWR<[], Error>(
     "https://jsonplaceholder.typicode.com/posts",
-    (args: string) => fetch(args).then((res) => res.json())
+    fecther
   );
 
   console.log(data);
-
-  // useSWR(() => '/api/user', key => {})
 
   return <div>Dashboard</div>;
 };
