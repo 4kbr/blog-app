@@ -1,0 +1,4 @@
+.input,
+.textArea {
+  @apply p-[10px] bg-transparent border-[2px] border-solid border-secondary rounded-md text-secondary font-bold;
+}

@@ -35,8 +35,8 @@ const handler = NextAuth({
             );
 
             if (isPasswordCorrect) {
-              const { password, ...other } = user;
-              return other;
+              console.log("passowrd benar");
+              return user;
             }
             throw new Error("Password Incorect");
           } else {
@@ -51,7 +51,7 @@ const handler = NextAuth({
     }),
   ],
   pages: {
-    error: "/",
+    error: "/dashboard/login",
   },
 });
 const GET = handler;

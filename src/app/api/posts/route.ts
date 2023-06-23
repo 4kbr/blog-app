@@ -3,16 +3,14 @@ import { NextResponse } from "next/server";
 import Post from "@/models/Post";
 import { IPost } from "@/utils/model_interface";
 
-/**
- *  ini buat App router
- * */
-export const GET = async (
-  request: Request
-): Promise<NextResponse<IPost[] | {}>> => {
-  //fetch
+export const GET = async (request: Request) => {
+  const url = new URL(request.url);
+
+  const username = url.searchParams.get("username");
+
   try {
     await dbConnect();
-    const posts = await Post.find<IPost>();
+    const posts = await Post.find<IPost>(username ? { username } : {});
     return NextResponse.json<IPost[]>(posts, { status: 200 });
   } catch (error) {
     return NextResponse.json(
@@ -23,7 +21,6 @@ export const GET = async (
 };
 
 export const POST = async (request: Request): Promise<NextResponse<{}>> => {
-  //fetch
   try {
     await dbConnect();
     const newPost = new Post(await request.json());
