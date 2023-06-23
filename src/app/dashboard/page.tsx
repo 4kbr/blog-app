@@ -18,12 +18,12 @@ const Dashboard = () => {
     content: "",
   });
 
-  console.log("session");
-  console.log(session);
+  // console.log("session");
+  // console.log(session);
 
   //TODO: new Way
   const fecther = (args: string) => fetch(args).then((res) => res.json());
-  const { error, isLoading, data } = useSWR<[IPost], Error>(
+  const { error, isLoading, data, mutate } = useSWR<[IPost], Error>(
     `/api/posts?username=${session.data?.user?.name}`,
     fecther
   );
@@ -53,8 +53,21 @@ const Dashboard = () => {
             username: session.data.user?.name,
           }),
         });
+        setFormState({ title: "", content: "", desc: "", image: "" });
+        mutate();
       } catch (error) {
         console.log(error);
+      }
+    };
+
+    const handleDelete = async (id: string) => {
+      try {
+        await fetch(`/api/posts/${id}`, {
+          method: "DELETE",
+        });
+        mutate();
+      } catch (err) {
+        console.log(err);
       }
     };
 
@@ -77,8 +90,17 @@ const Dashboard = () => {
                     className="object-cover"
                   />
                 </div>
-                <h2 className="postTitle">{post.title}</h2>
-                <span className="delete cursor-pointer text-red-500">X</span>
+                <h2 className="postTitle text-center ">
+                  {post.title.length > 20
+                    ? post.title.slice(0, 20) + "..."
+                    : post.title}
+                </h2>
+                <span
+                  className="delete cursor-pointer text-red-500"
+                  onClick={() => handleDelete(post._id)}
+                >
+                  X
+                </span>
               </div>
             ))
           )}

@@ -35,3 +35,27 @@ export const GET = async (
     );
   }
 };
+
+export const DELETE = async (
+  request: Request,
+  { params }: { params: { postId?: string } }
+): Promise<NextResponse<IPost | {}>> => {
+  try {
+    await dbConnect();
+    await Post.findByIdAndDelete(params.postId);
+    return NextResponse.json(
+      { message: "successfully delete" },
+      { status: 200 }
+    );
+  } catch (error) {
+    if (!error)
+      return NextResponse.json(
+        { message: "Not Found ", error },
+        { status: 404 }
+      );
+    return NextResponse.json(
+      { message: "Not Found Or Server Error", error },
+      { status: 500 }
+    );
+  }
+};
