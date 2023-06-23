@@ -18,9 +18,6 @@ const Dashboard = () => {
     content: "",
   });
 
-  // console.log("session");
-  // console.log(session);
-
   //TODO: new Way
   const fecther = (args: string) => fetch(args).then((res) => res.json());
   const { error, isLoading, data, mutate } = useSWR<[IPost], Error>(
