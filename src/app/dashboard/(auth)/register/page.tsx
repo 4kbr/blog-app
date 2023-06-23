@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import styles from "./page.module.css";
-import { useRouter } from "next/navigation";
 
 const Register = () => {
   const [formState, setFormState] = useState({
@@ -14,21 +14,25 @@ const Register = () => {
   const router = useRouter();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    setErr(false);
     event.preventDefault();
     console.log("name is");
-    try {
-      const res = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formState),
-      });
-      res.status === 201 &&
-        router.push("/dashboard/login?success=Account has been created");
-    } catch (error) {
+    // try {
+    const res = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formState),
+    });
+    //TODO:nanti bagusin
+    if (res.status >= 400) {
       setErr(true);
+      return;
     }
+    res.status === 201 &&
+      router.push("/dashboard/login?success=Account has been created");
+    return;
   };
 
   return (

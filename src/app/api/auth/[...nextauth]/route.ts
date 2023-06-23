@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { Awaitable } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialProvider from "next-auth/providers/credentials";
 import dbConnect from "@/utils/db";
@@ -17,14 +17,13 @@ const handler = NextAuth({
       id: "credentials",
       name: "Credentials",
       credentials: {
-        email: { label: "Username", type: "email" },
+        email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+      authorize: async (credentials) => {
         await dbConnect();
         try {
-          // const user = User.findOne<IUser>({ email: credentials?.email });
-          const user = await User.findOne<IUser | null>({
+          const user = await User.findOne({
             email: credentials?.email,
           });
 
@@ -36,23 +35,24 @@ const handler = NextAuth({
             );
 
             if (isPasswordCorrect) {
-              return user;
+              const { password, ...other } = user;
+              return other;
             }
-            return NextResponse.json(
-              { message: "Wrong Credentials" },
-              { status: 400 }
-            );
+            throw new Error("Password Incorect");
+          } else {
+            throw new Error("User not found");
           }
         } catch (error) {
-          return NextResponse.json(
-            { message: "Request Failed" },
-            { status: 500 }
-          );
-          // throw new Error(error);
+          const err: Error = error as Error;
+
+          throw new Error(err.message);
         }
       },
     }),
   ],
+  pages: {
+    error: "/",
+  },
 });
 const GET = handler;
 const POST = handler;

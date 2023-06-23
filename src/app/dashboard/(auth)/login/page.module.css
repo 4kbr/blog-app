@@ -1,3 +1,19 @@
 .input {
   @apply p-5 bg-transparent border-[2px] border-solid border-[#bbb] rounded-md text-xl font-bold;
 }
+
+.button {
+  @apply p-5 cursor-pointer bg-primary border-none rounded-md text-white;
+}
+
+.button:hover {
+  @apply opacity-80;
+}
+
+.google {
+  @apply bg-[rgba(228,97,50,0.72)];
+}
+
+.google:hover {
+  @apply bg-[rgba(228,97,50,0.803)];
+}
